@@ -114,7 +114,7 @@ function App() {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className="sticky top-0 left-0 right-0 z-[100] glass-morphism border-b border-gray-800"
+        className="fixed top-0 left-0 right-0 z-[100] glass-morphism border-b border-gray-800 safe-top"
       >
         <div className="container mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
           <div className="flex-1"></div>
@@ -135,7 +135,7 @@ function App() {
       </motion.nav>
 
       {/* Main content */}
-      <main className="relative z-10">
+      <main className="relative z-10 pt-[72px]">
         <Suspense fallback={<LoadingSpinner />}>
           <Hero />
         </Suspense>

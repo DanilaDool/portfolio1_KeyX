@@ -51,6 +51,11 @@
   .text-glow {
     text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
   }
+  
+  /* Safe area for notch/status bar */
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
 
   /* Custom Scrollbar */
   .scrollbar-thin::-webkit-scrollbar {
