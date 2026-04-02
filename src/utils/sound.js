@@ -11,7 +11,7 @@ class SoundManager {
   // Load the MP3 sound file
   loadSound() {
     try {
-      this.audio = new Audio('/data/16fe8ac99665d1c.mp3')
+      this.audio = new Audio('/16fe8ac99665d1c.mp3')
       this.audio.volume = this.volume
     } catch (error) {
       console.warn('Failed to load sound:', error)
