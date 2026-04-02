@@ -86,8 +86,11 @@ const Cart = () => {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-              className="fixed right-0 top-0 h-[100dvh] w-full sm:w-[500px] bg-gradient-to-b from-gray-900 to-black border-l border-purple-500/30 z-[70] shadow-2xl overflow-hidden"
-              style={{ WebkitOverflowScrolling: 'touch' }}
+              className="fixed right-0 top-0 h-[100dvh] w-full sm:w-[500px] bg-gradient-to-b from-gray-900 to-black border-l border-purple-500/30 z-[70] shadow-2xl"
+              style={{ 
+                WebkitOverflowScrolling: 'touch',
+                touchAction: 'none'
+              }}
             >
               <div className="h-full flex flex-col">
                 {/* Header */}
@@ -118,8 +121,14 @@ const Cart = () => {
                 {/* Cart Items */}
                 <div 
                   ref={scrollRef}
-                  className="flex-1 overflow-y-auto p-6 bg-black/30 scrollbar-thin scrollbar-thumb-purple-500 scrollbar-track-gray-800"
-                  onWheel={(e) => e.stopPropagation()}
+                  className="flex-1 overflow-y-auto p-6 bg-black/30"
+                  style={{
+                    WebkitOverflowScrolling: 'touch',
+                    overscrollBehavior: 'contain',
+                    touchAction: 'pan-y'
+                  }}
+                  onTouchStart={(e) => e.stopPropagation()}
+                  onTouchMove={(e) => e.stopPropagation()}
                 >
                   {cartItems.length === 0 ? (
                     <div className="h-full flex flex-col items-center justify-center text-gray-400">
