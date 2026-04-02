@@ -9,12 +9,28 @@ const Cart = () => {
   // Prevent body scroll when cart is open and allow cart scroll
   useEffect(() => {
     if (isCartOpen) {
+      // Save current scroll position
+      const scrollY = window.scrollY
+      document.body.style.position = 'fixed'
+      document.body.style.top = `-${scrollY}px`
+      document.body.style.width = '100%'
       document.body.style.overflow = 'hidden'
     } else {
-      document.body.style.overflow = 'unset'
+      // Restore scroll position
+      const scrollY = document.body.style.top
+      document.body.style.position = ''
+      document.body.style.top = ''
+      document.body.style.width = ''
+      document.body.style.overflow = ''
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || '0') * -1)
+      }
     }
     return () => {
-      document.body.style.overflow = 'unset'
+      document.body.style.position = ''
+      document.body.style.top = ''
+      document.body.style.width = ''
+      document.body.style.overflow = ''
     }
   }, [isCartOpen])
 
@@ -22,10 +38,15 @@ const Cart = () => {
     <>
       {/* Cart Icon Button */}
       <motion.button
-        onClick={() => setIsCartOpen(true)}
+        onClick={(e) => {
+          e.preventDefault()
+          e.stopPropagation()
+          setIsCartOpen(true)
+        }}
         className="relative p-3 glass-morphism rounded-lg"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
+        type="button"
       >
         <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -50,8 +71,13 @@ const Cart = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setIsCartOpen(false)}
+              onClick={(e) => {
+                e.preventDefault()
+                e.stopPropagation()
+                setIsCartOpen(false)
+              }}
               className="fixed inset-0 bg-black/70 backdrop-blur-sm z-[60]"
+              style={{ touchAction: 'none' }}
             />
 
             {/* Cart Panel */}
@@ -72,10 +98,15 @@ const Cart = () => {
                       <p className="text-sm text-gray-400">{getTotalItems()} товар(ов)</p>
                     </div>
                     <motion.button
-                      onClick={() => setIsCartOpen(false)}
+                      onClick={(e) => {
+                        e.preventDefault()
+                        e.stopPropagation()
+                        setIsCartOpen(false)
+                      }}
                       className="p-3 hover:bg-gray-800 rounded-xl transition-colors"
                       whileHover={{ scale: 1.1, rotate: 90 }}
                       whileTap={{ scale: 0.9 }}
+                      type="button"
                     >
                       <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
