@@ -2,9 +2,9 @@ import { motion } from 'framer-motion'
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden p-0 m-0">
+    <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden p-0 m-0">
       {/* Background Image */}
-      <div className="absolute inset-0 w-screen h-screen">
+      <div className="absolute inset-0 w-full h-full">
         <img 
           src="/images/optimized/pexels-atahandemir-28842075.jpg"
           alt="KeyX Gaming Keyboard Background"
@@ -15,8 +15,8 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/80"></div>
       </div>
       
-      {/* Floating particles */}
-      <div className="absolute inset-0">
+      {/* Floating particles - disabled on mobile */}
+      <div className="absolute inset-0 hidden sm:block">
         {[...Array(5)].map((_, i) => (
           <motion.div
             key={i}
@@ -48,15 +48,9 @@ const Hero = () => {
           >
             <motion.h1 
               className="text-4xl sm:text-7xl lg:text-8xl font-bold mb-4 sm:mb-6 text-glow"
-              animate={{
-                textShadow: [
-                  '0 0 20px #a855f7',
-                  '0 0 30px #ec4899',
-                  '0 0 20px #06b6d4',
-                  '0 0 20px #a855f7',
-                ],
+              style={{
+                textShadow: '0 0 20px #a855f7'
               }}
-              transition={{ duration: 3, repeat: Infinity }}
             >
               Key<span className="text-purple-500">X</span>
             </motion.h1>
@@ -99,9 +93,9 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator - hidden on mobile */}
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden sm:block"
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 1.5, repeat: Infinity }}
       >

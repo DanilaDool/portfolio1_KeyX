@@ -101,9 +101,9 @@ function App() {
       className="relative min-h-screen"
       style={{ backgroundColor }}
     >
-      {/* Animated background gradients */}
+      {/* Animated background gradients - disabled on mobile */}
       <motion.div 
-        className="fixed inset-0 pointer-events-none z-0"
+        className="fixed inset-0 pointer-events-none z-0 hidden sm:block"
         style={{ opacity: gradientOpacity }}
       >
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-600/30 rounded-full blur-3xl" />
@@ -114,7 +114,7 @@ function App() {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className="fixed top-0 left-0 right-0 z-[100] glass-morphism border-b border-gray-800"
+        className="sticky top-0 left-0 right-0 z-[100] glass-morphism border-b border-gray-800"
       >
         <div className="container mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
           <div className="flex-1"></div>
@@ -139,7 +139,7 @@ function App() {
         <Suspense fallback={<LoadingSpinner />}>
           <Hero />
         </Suspense>
-        <div className="pt-20">
+        <div className="pt-0">
         <Suspense fallback={<LoadingSpinner />}>
           <div id="products">
             <Products />

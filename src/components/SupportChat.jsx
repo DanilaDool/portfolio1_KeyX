@@ -122,7 +122,7 @@ const SupportChat = () => {
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="fixed bottom-24 right-4 sm:right-8 z-40 w-full max-w-[calc(100vw-2rem)] sm:w-96 h-[500px] max-h-[calc(100vh-8rem)] glass-morphism rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-gray-700"
+            className="fixed bottom-24 right-4 sm:right-8 z-40 w-full max-w-[calc(100vw-2rem)] sm:w-96 h-[500px] max-h-[calc(100dvh-8rem)] glass-morphism rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-gray-700"
           >
             {/* Header */}
             <div className="bg-gradient-to-r from-purple-600 to-pink-600 p-4 flex items-center gap-3">

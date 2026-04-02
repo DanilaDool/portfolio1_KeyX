@@ -9,6 +9,18 @@
 
   body {
     @apply bg-black text-white overflow-x-hidden;
+    /* Fix for mobile browsers */
+    position: relative;
+    min-height: 100vh;
+    min-height: 100svh;
+    overscroll-behavior-y: contain;
+  }
+  
+  /* Fix for iOS Safari address bar */
+  @supports (-webkit-touch-callout: none) {
+    body {
+      min-height: -webkit-fill-available;
+    }
   }
   
   /* Respect user's motion preferences */

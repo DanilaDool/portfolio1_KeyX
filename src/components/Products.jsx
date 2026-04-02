@@ -91,26 +91,14 @@ const ProductCard = ({ product, index }) => {
         whileHover={{ y: -10 }}
         transition={{ duration: 0.3 }}
       >
-        {/* Animated gradient background */}
+        {/* Animated gradient background - disabled on mobile */}
         <motion.div
-          className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-0 group-hover:opacity-20`}
+          className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-0 group-hover:opacity-20 hidden sm:block`}
           transition={{ duration: 0.3 }}
         />
 
         {/* Product image */}
         <div className="relative aspect-video mb-6 rounded-xl overflow-hidden">
-          <motion.div
-            className="absolute inset-0 -z-10"
-            animate={isHovered ? {
-              boxShadow: [
-                `0 0 20px ${product.color.includes('purple') ? '#a855f7' : '#06b6d4'}`,
-                `0 0 40px ${product.color.includes('purple') ? '#ec4899' : '#10b981'}`,
-                `0 0 20px ${product.color.includes('purple') ? '#a855f7' : '#06b6d4'}`,
-              ],
-            } : {}}
-            transition={{ duration: 2, repeat: Infinity }}
-          />
-          
           <img 
             src={product.image} 
             alt={product.name}
@@ -203,9 +191,9 @@ const ProductCard = ({ product, index }) => {
           )}
         </div>
 
-        {/* Hover glow effect */}
+        {/* Hover glow effect - disabled on mobile */}
         <motion.div
-          className={`absolute -inset-1 bg-gradient-to-r ${product.color} rounded-2xl blur-xl opacity-0 group-hover:opacity-30 -z-10`}
+          className={`absolute -inset-1 bg-gradient-to-r ${product.color} rounded-2xl blur-xl opacity-0 group-hover:opacity-30 -z-10 hidden sm:block`}
           transition={{ duration: 0.3 }}
         />
       </motion.div>
