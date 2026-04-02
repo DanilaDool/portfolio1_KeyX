@@ -53,7 +53,7 @@ const TelegramWidget = () => {
             <div className="relative bg-gradient-to-br from-[#0088cc] to-[#006699] rounded-full sm:rounded-xl p-3 shadow-xl border border-[#0088cc]/50">
               <div className="flex items-center gap-2">
                 <img 
-                  src="/data/telegram.png" 
+                  src="/telegram.png" 
                   alt="Telegram" 
                   className="w-7 h-7 sm:w-8 sm:h-8"
                 />
